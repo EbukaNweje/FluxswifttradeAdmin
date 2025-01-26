@@ -14,7 +14,7 @@ const UserDetails = () => {
     const Nav = useNavigate()
 
     const handleGetOneUserData = () => {
-        const url = `https://fluxswifttrade-back-end.vercel.app/api/userdata/${id}`;
+        const url = `https://fluxswifttrade-back-end-two.vercel.app/api/userdata/${id}`;
         axios
             .get(url)
             .then((res) => {
@@ -86,7 +86,7 @@ const UserDetails = () => {
     //         const toastLoadingId = toast.loading("Please wait...");
     //         const data = reqData;
     //         console.log(data);
-    //         const url = `https://fluxswifttrade-back-end.vercel.app/api/userdata/${id}`;
+    //         const url = `https://fluxswifttrade-back-end-two.vercel.app/api/userdata/${id}`;
     //         console.log(url);
     //         axios
     //             .patch(url, data)
@@ -150,7 +150,7 @@ const UserDetails = () => {
             console.log(reqData);
     
             // Proceed with the API call
-            const url = `https://fluxswifttrade-back-end.vercel.app/api/userdata/${id}`;
+            const url = `https://fluxswifttrade-back-end-two.vercel.app/api/userdata/${id}`;
             axios
                 .patch(url, reqData)
                 .then((response) => {
@@ -245,7 +245,7 @@ const UserDetails = () => {
         setDeleteUser(false);
         const toastLoadingId = toast.loading("Please wait...");
         setShowActions(false);
-        const url = `https://fluxswifttrade-back-end.vercel.app/api/userdata/${id}`;
+        const url = `https://fluxswifttrade-back-end-two.vercel.app/api/userdata/${id}`;
         axios
             .delete(url)
             .then((res) => {

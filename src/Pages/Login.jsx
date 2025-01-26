@@ -9,7 +9,7 @@ import {useEffect, useState} from "react";
 const Login = () => {
 
     const getAllUserData = () => {
-        const url = "https://fluxswifttrade-back-end.vercel.app/api/alluserdata";
+        const url = "https://fluxswifttrade-back-end-two.vercel.app/api/alluserdata";
         axios
             .get(url)
             .then((response) => {
@@ -50,7 +50,7 @@ const Login = () => {
             console.log(userData);
             axios
                 .post(
-                    "https://fluxswifttrade-back-end.vercel.app/api/adminlogin",
+                    "https://fluxswifttrade-back-end-two.vercel.app/api/adminlogin",
                     userData
                 )
                 .then((res) => {
