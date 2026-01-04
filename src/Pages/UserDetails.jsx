@@ -48,10 +48,24 @@ const UserDetails = () => {
   const handleOnRoi = () => {
     setShowActions(false);
     const toastLoadingId = toast.loading("Please wait...");
-    setTimeout(() => {
-      toast.dismiss(toastLoadingId);
-      toast.success("ROI turned of successfully");
-    }, 3000);
+    const url = `https://fluxswifttrade-back-end-two.vercel.app/api/turn-on-user-notification/${id}`;
+    axios
+      .post(url)
+      .then((res) => {
+        console.log(res);
+        toast.dismiss(toastLoadingId);
+        toast.success(res.data.message);
+        setTimeout(() => {
+          handleGetOneUserData();
+        }, 1000);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // setTimeout(() => {
+    //     toast.dismiss(toastLoadingId);
+    //     toast.success("ROI turned of successfully");
+    // }, 3000);
   };
 
   const [creditDebit, setCreditDebit] = useState(false);
@@ -313,24 +327,26 @@ const UserDetails = () => {
                     >
                       Block
                     </div>
-                    {/* <div
-                                            className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer"
-                                            onClick={handleOnRoi}
-                                        >
-                                            Turn off auto ROI
-                                        </div> */}
+                    <div
+                      className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer"
+                      onClick={handleOnRoi}
+                    >
+                      {oneUserData?.status
+                        ? "Turn off notification"
+                        : "Turn on notification"}
+                    </div>
                     <div
                       className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer"
                       onClick={() => setCreditDebit(!creditDebit)}
                     >
                       Credit/Debit
                     </div>
-                    <div
+                    {/* <div
                       className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer"
                       onClick={() => setResetPwd(!resetPwd)}
                     >
                       Reset Password
-                    </div>
+                    </div> */}
                     <div
                       className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer"
                       onClick={() => setClearAcc(!clearAcc)}
@@ -343,21 +359,21 @@ const UserDetails = () => {
                                         >
                                             Add ROI history
                                         </div> */}
-                    <div
+                    {/* <div
                       className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer"
                       onClick={() => setEdit(!edit)}
                     >
                       Edit
-                    </div>
-                    <div className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer">
+                    </div> */}
+                    {/* <div className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer">
                       Add Referral
-                    </div>
-                    <div
+                    </div> */}
+                    {/* <div
                       className="w-full h-7 flex items-center pl-1 text-sm hover:bg-gray-300 cursor-pointer"
                       onClick={() => setSendEmail(!sendEmail)}
                     >
                       Send Email
-                    </div>
+                    </div> */}
                     <div
                       className="w-full h-max flex items-center pl-1 py-1 text-sm hover:bg-gray-300 cursor-pointer text-[#31ce36]"
                       onClick={() => setLogin(!login)}
